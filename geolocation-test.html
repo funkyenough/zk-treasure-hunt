@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Geolocation Sample</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div class="center">
+        <div class="btn-margin">
+            <button id="btn" class="btn btn-outline-primary btn-lg">
+                現在位置を取得する
+            </button>
+        </div>
+        <div class="txt-margin">
+            <p>緯度：<span id="latitude">???</span><span>度</span></p>
+            <p>経度：<span id="longitude">???</span><span>度</span></p>
+            <p>ZKGEOPOINT：<span id="zkgeopoint">???</span><span>単位</span></p>
+            <p>Proof：<span id="proof">???</span><span>単位</span></p>
+        </div>
+    </div>
+    <script src="geolocation.js"></script>
+
+
+  <script src="test-zklocus.js"></script>
+
+
+</body>
+</html>
