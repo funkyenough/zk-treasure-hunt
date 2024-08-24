@@ -7,12 +7,43 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     zkTreasure: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
           inputs: [],
           stateMutability: "nonpayable",
           type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "coordinateId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "x",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "y",
+              type: "uint256",
+            },
+          ],
+          name: "CoordinateCreated",
+          type: "event",
         },
         {
           inputs: [
@@ -38,45 +69,6 @@ const deployedContracts = {
           name: "changeOwner",
           outputs: [],
           stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          name: "coordinates",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "coordinateId",
-              type: "uint256",
-            },
-            {
-              internalType: "address",
-              name: "player",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "x",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "y",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
           type: "function",
         },
         {
@@ -120,9 +112,9 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "bytes32",
+              internalType: "uint256",
               name: "_treasureHash",
-              type: "bytes32",
+              type: "uint256",
             },
           ],
           name: "createGame",
@@ -265,9 +257,9 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "bytes32",
+              internalType: "uint256",
               name: "treasureHash",
-              type: "bytes32",
+              type: "uint256",
             },
             {
               components: [
@@ -431,9 +423,9 @@ const deployedContracts = {
                   type: "uint256",
                 },
                 {
-                  internalType: "bytes32",
+                  internalType: "uint256",
                   name: "treasureHash",
-                  type: "bytes32",
+                  type: "uint256",
                 },
                 {
                   components: [
@@ -524,59 +516,6 @@ const deployedContracts = {
             },
           ],
           name: "setWinner",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "_gameId",
-              type: "uint256",
-            },
-          ],
-          name: "startGame",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "_gameId",
-              type: "uint256",
-            },
-            {
-              components: [
-                {
-                  internalType: "uint256",
-                  name: "coordinateId",
-                  type: "uint256",
-                },
-                {
-                  internalType: "address",
-                  name: "player",
-                  type: "address",
-                },
-                {
-                  internalType: "uint256",
-                  name: "x",
-                  type: "uint256",
-                },
-                {
-                  internalType: "uint256",
-                  name: "y",
-                  type: "uint256",
-                },
-              ],
-              internalType: "struct zkTreasure.Coordinate",
-              name: "_treasureCoordinate",
-              type: "tuple",
-            },
-          ],
-          name: "verifyTreasureCoordinate",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",

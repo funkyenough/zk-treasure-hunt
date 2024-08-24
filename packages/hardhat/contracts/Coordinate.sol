@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.20;
+
+import "./PoseidonT3.sol";
 
 contract zkTreasure {
 
@@ -21,18 +23,19 @@ contract zkTreasure {
         address closestPlayer;
         uint256 closestDistance;
         uint256 totalDeposit;
-        bytes32 treasureHash;
+        uint256 treasureHash;
         Coordinate treasureCoordinate;
         bool treasureCoordinateVerified;
     }
 
     Game[] public games;
-    mapping(address => Coordinate[]) public coordinates;
 
     uint256 public nextGameId;
     uint256 public nextCoordinateId;
     address public owner;
     uint256 public entranceFee;
+
+    event CoordinateCreated(uint256 coordinateId, address player, uint256 x, uint256 y);
 
     constructor() {
         owner = msg.sender;
@@ -60,15 +63,15 @@ contract zkTreasure {
         entranceFee = _newFee; // If not, change the entrance fee
     }
 
-    function createGame(string memory _name, string memory _description, uint256 _duration, bytes32 _treasureHash) external onlyOwner () {
+    function createGame(string memory _name, string memory _description, uint256 _duration, uint256 _treasureHash) external onlyOwner {
         // Create a new game
         uint256 gameId = nextGameId;
         games.push(); // This creates a new empty Game struct in storage
         Game storage newGame = games[gameId];
-        
+
         newGame.name = _name;
         newGame.description = _description;
-        newGame.startAt = 0;
+        newGame.startAt = block.timestamp;
         newGame.duration = _duration;
         newGame.isOver = false;
         newGame.closestPlayer = address(0);
@@ -76,7 +79,7 @@ contract zkTreasure {
         newGame.totalDeposit = 0;
         newGame.treasureHash = _treasureHash;
         newGame.treasureCoordinateVerified = false;
-        
+
         // Initialize the treasureCoordinate
         newGame.treasureCoordinate = Coordinate({
             coordinateId: 0,
@@ -84,18 +87,12 @@ contract zkTreasure {
             x: 0,
             y: 0
         });
-        
+
         nextGameId++;
     }
 
     function getGame(uint256 _gameId) public view returns (Game memory) { // Get a game
         return games[_gameId];
-    }
-
-    function startGame(uint256 _gameId) external onlyOwner () { // Start the game
-        assert(games[_gameId].isOver == false); // The game should not have started
-        assert(games[_gameId].startAt == 0);
-        games[_gameId].startAt = block.timestamp;
     }
 
     function finishGame(uint256 _gameId, Coordinate memory _treasureCoordinate) onlyOwner external { // Finish the game
@@ -112,7 +109,7 @@ contract zkTreasure {
         uint256 coordinateId = nextCoordinateId;
         Coordinate memory newCoordinate = Coordinate(coordinateId, msg.sender, _x, _y);
         games[_gameId].coordinates.push(newCoordinate);
-        coordinates[msg.sender].push(newCoordinate);
+        emit CoordinateCreated(coordinateId, msg.sender, _x, _y);
         nextCoordinateId++;
     }
 
@@ -123,7 +120,7 @@ contract zkTreasure {
     function verifyTreasureCoordinate(uint256 _gameId, Coordinate memory _treasureCoordinate) external { // Verify the treasure coordinate
         require(games[_gameId].isOver == true, "The game should be over");
         require(games[_gameId].treasureCoordinateVerified == false, "The treasure coordinate is already verified");
-        require(games[_gameId].treasureHash == keccak256(abi.encodePacked(_treasureCoordinate.x, _treasureCoordinate.y)), "The treasure coordinate is wrong");
+        require(games[_gameId].treasureHash == PoseidonT3.hash([_treasureCoordinate.x, _treasureCoordinate.y]), "The treasure coordinate is wrong");
         games[_gameId].treasureCoordinateVerified = true;
     }
 
