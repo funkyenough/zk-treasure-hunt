@@ -1,5 +1,7 @@
 pragma circom 2.0.0;
 
+// TODO Add Range Check
+
 include "../node_modules/circomlib/circuits/comparators.circom";
 
 template isCloser() {
@@ -33,3 +35,9 @@ template isCloser() {
 }
 
 component main {public [userPrevCoord, userCurrCoord]} = isCloser();
+
+/* INPUT = {
+    "treasureCoord": ["12345", "12345"],
+    "userPrevCoord": ["12343", "12343"],
+    "userCurrCoord": ["12344", "123444"]
+}*/
