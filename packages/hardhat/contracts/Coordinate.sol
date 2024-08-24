@@ -5,6 +5,7 @@ contract zkTreasure {
 
     struct Coordinate {
         uint256 coordinateId;
+        address player;
         uint256 x;
         uint256 y;
     }
@@ -62,8 +63,28 @@ contract zkTreasure {
     function createGame(string memory _name, string memory _description, uint256 _duration, bytes32 _treasureHash) external onlyOwner () {
         // Create a new game
         uint256 gameId = nextGameId;
-        Game memory newGame = Game(_name, _description, 0, _duration, new address[](0), new Coordinate[](0), false, address(0), 2 ** 256 -1, 0 ether, _treasureHash, new Coordinate[](0), false);
-        games[gameId] = newGame;
+        games.push(); // This creates a new empty Game struct in storage
+        Game storage newGame = games[gameId];
+        
+        newGame.name = _name;
+        newGame.description = _description;
+        newGame.startAt = 0;
+        newGame.duration = _duration;
+        newGame.isOver = false;
+        newGame.closestPlayer = address(0);
+        newGame.closestDistance = type(uint256).max;
+        newGame.totalDeposit = 0;
+        newGame.treasureHash = _treasureHash;
+        newGame.treasureCoordinateVerified = false;
+        
+        // Initialize the treasureCoordinate
+        newGame.treasureCoordinate = Coordinate({
+            coordinateId: 0,
+            player: address(0),
+            x: 0,
+            y: 0
+        });
+        
         nextGameId++;
     }
 
@@ -71,7 +92,7 @@ contract zkTreasure {
         return games[_gameId];
     }
 
-    function startGame(uint256 _gameId, bytes32 _treasureHash) external onlyOwner () { // Start the game
+    function startGame(uint256 _gameId) external onlyOwner () { // Start the game
         assert(games[_gameId].isOver == false); // The game should not have started
         assert(games[_gameId].startAt == 0);
         games[_gameId].startAt = block.timestamp;
@@ -89,7 +110,7 @@ contract zkTreasure {
         assert(games[_gameId].startAt != 0);
         // TODO player should belong to a game
         uint256 coordinateId = nextCoordinateId;
-        Coordinate memory newCoordinate = Coordinate(coordinateId, _x, _y);
+        Coordinate memory newCoordinate = Coordinate(coordinateId, msg.sender, _x, _y);
         games[_gameId].coordinates.push(newCoordinate);
         coordinates[msg.sender].push(newCoordinate);
         nextCoordinateId++;
@@ -113,8 +134,6 @@ contract zkTreasure {
     }
 
     function withdraw(uint256 _gameId) public onlyOwner payable { // Send rewards to the winner
-        uint256 amountToSend = games[_gameId].totalDeposit;
-        games[_gameId].totalDeposit = 0;
         (bool success, ) = games[_gameId].closestPlayer.call{value: games[_gameId].totalDeposit}("");
         require(success, "Failed to send Rewards");
     }
@@ -128,12 +147,12 @@ contract zkTreasure {
         }
     }
 
-    function fraudProofCheck(uint256 _gameId, uint256 coordinateId, address winner) external { // Check if a player is cheating
+    function fraudProofCheck(uint256 _gameId, uint256 coordinateId) external { // Check if a player is cheating
         // Here we check if the player is the closest to the treasure
         require(games[_gameId].treasureCoordinateVerified == true, "The treasure coordinate is not verified");
 
-        uint256 inputX = games[_gameId].coordinates[winner[coordinateId]].x;
-        uint256 inputY = games[_gameId].coordinates[winner[coordinateId]].y;
+        uint256 inputX = games[_gameId].coordinates[coordinateId].x;
+        uint256 inputY = games[_gameId].coordinates[coordinateId].y;
         uint256 treasureX = games[_gameId].treasureCoordinate.x;
         uint256 treasureY = games[_gameId].treasureCoordinate.y;
         uint256 distance = sqrt((inputX - treasureX) ** 2 + (inputY - treasureY) ** 2);
