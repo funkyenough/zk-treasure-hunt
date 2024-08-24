@@ -1,0 +1,16 @@
+{
+  "name": "prover",
+  "version": "1.0.0",
+  "main": "plonkProver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "circomlib": "^2.0.5",
+    "keccak256-circom": "git+https://github.com/vocdoni/keccak256-circom"
+  }
+}

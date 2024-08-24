@@ -600,12 +600,43 @@ const deployedContracts = {
   },
   11155111: {
     zkTreasure: {
-      address: "0x97A8fd9494f45AeDcD17a705a10Ac703c4e4377D",
+      address: "0x17727C9112c1b2c8bFf7361Df02096Ce3d117e35",
       abi: [
         {
           inputs: [],
           stateMutability: "nonpayable",
           type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "coordinateId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "x",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "y",
+              type: "uint256",
+            },
+          ],
+          name: "CoordinateCreated",
+          type: "event",
         },
         {
           inputs: [
@@ -631,45 +662,6 @@ const deployedContracts = {
           name: "changeOwner",
           outputs: [],
           stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          name: "coordinates",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "coordinateId",
-              type: "uint256",
-            },
-            {
-              internalType: "address",
-              name: "player",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "x",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "y",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
           type: "function",
         },
         {
@@ -713,9 +705,9 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "bytes32",
+              internalType: "uint256",
               name: "_treasureHash",
-              type: "bytes32",
+              type: "uint256",
             },
           ],
           name: "createGame",
@@ -858,9 +850,9 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "bytes32",
+              internalType: "uint256",
               name: "treasureHash",
-              type: "bytes32",
+              type: "uint256",
             },
             {
               components: [
@@ -1024,9 +1016,9 @@ const deployedContracts = {
                   type: "uint256",
                 },
                 {
-                  internalType: "bytes32",
+                  internalType: "uint256",
                   name: "treasureHash",
-                  type: "bytes32",
+                  type: "uint256",
                 },
                 {
                   components: [
@@ -1117,19 +1109,6 @@ const deployedContracts = {
             },
           ],
           name: "setWinner",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "_gameId",
-              type: "uint256",
-            },
-          ],
-          name: "startGame",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
