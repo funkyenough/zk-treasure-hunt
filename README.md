@@ -22,7 +22,7 @@ Challenges I ran into
 
 Technologies I used
 
-- We used ZKP platform.
+- We used ZKP platform. We wrote circuits in 'circom' and comiled them for 'groth16' with 'snarkJS'.
 
 How we built it
 
