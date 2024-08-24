@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { parseEther } from "viem";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 // Function to transform coordinates to integers
@@ -137,8 +136,7 @@ export default function GeolocationMapPage() {
     try {
       await writeYourContractAsync({
         functionName: "createCoordinate",
-        args: [0, transformedCoordinates.latitude, transformedCoordinates.longitude],
-        value: parseEther("0"), // Adjust if the function is payable
+        args: [BigInt(0), BigInt(transformedCoordinates.latitude), BigInt(transformedCoordinates.longitude)],
       });
       console.log("Coordinates posted successfully");
       setErrorMessage(""); // Clear any previous errors

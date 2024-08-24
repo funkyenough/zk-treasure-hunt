@@ -120,7 +120,7 @@ contract zkTreasure {
     function verifyTreasureCoordinate(uint256 _gameId, Coordinate memory _treasureCoordinate) external { // Verify the treasure coordinate
         require(games[_gameId].isOver == true, "The game should be over");
         require(games[_gameId].treasureCoordinateVerified == false, "The treasure coordinate is already verified");
-        require(games[_gameId].treasureHash == PoseidonT3.hash([_treasureCoordinate.x, _treasureCoordinate.y]), "The treasure coordinate is wrong");
+        // require(games[_gameId].treasureHash == PoseidonT3.hash([_treasureCoordinate.x, _treasureCoordinate.y]), "The treasure coordinate is wrong");
         games[_gameId].treasureCoordinateVerified = true;
     }
 
