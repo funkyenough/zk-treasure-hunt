@@ -19,9 +19,13 @@
   "dependencies": {
     "@openzeppelin/contracts": "~4.8.1",
     "@typechain/ethers-v6": "~0.5.1",
+    "circomlib": "^2.0.5",
     "dotenv": "~16.0.3",
     "envfile": "~6.18.0",
-    "qrcode": "~1.5.1"
+    "hardhat": "^2.22.9",
+    "qrcode": "~1.5.1",
+    "snarkjs": "^0.7.4",
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@ethersproject/abi": "~5.7.0",

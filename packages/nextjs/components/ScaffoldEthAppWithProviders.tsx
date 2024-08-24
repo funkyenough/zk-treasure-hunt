@@ -13,7 +13,6 @@ import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
 import { useInitializeNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
-
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   useInitializeNativeCurrencyPrice();
 
@@ -37,8 +36,6 @@ export const queryClient = new QueryClient({
   },
 });
 
-
-
 export const ScaffoldEthAppWithProviders = ({ children }: { children: React.ReactNode }) => {
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === "dark";
@@ -56,9 +53,7 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
           avatar={BlockieAvatar}
           theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
         >
-          
           <ScaffoldEthApp>{children}</ScaffoldEthApp>
-          
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
