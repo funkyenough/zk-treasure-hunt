@@ -4,7 +4,6 @@ The huckathon details are found at
 https://app.akindo.io/hackathons/3dXM7ZO2WsxvlkXp .
 
 
-
 What it does
 - We build a multi-play treasure hunt game, which is based on ZKP technology, as the project name says.
   Prover sets a hidden treasure spot secretly, and users moves around on the map to find the spot.
