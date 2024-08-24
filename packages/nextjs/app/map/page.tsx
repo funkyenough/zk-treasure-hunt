@@ -40,7 +40,7 @@ export default function Page() {
           ],
           strokeColor: "#FF0000", // 線の色を赤に設定
           strokeOpacity: 1.0,
-          strokeWeight: 2,
+          strokeWeight: 5,
         });
 
         // 地図にPolylineを表示

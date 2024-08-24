@@ -1,0 +1,876 @@
+{
+  "address": "0x97A8fd9494f45AeDcD17a705a10Ac703c4e4377D",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_newFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeEntranceFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "changeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "coordinates",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "coordinateId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "x",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "y",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_x",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_y",
+          "type": "uint256"
+        }
+      ],
+      "name": "createCoordinate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_duration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_treasureHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "createGame",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "entranceFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "coordinateId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "player",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "x",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "y",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct zkTreasure.Coordinate",
+          "name": "_treasureCoordinate",
+          "type": "tuple"
+        }
+      ],
+      "name": "finishGame",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "coordinateId",
+          "type": "uint256"
+        }
+      ],
+      "name": "fraudProofCheck",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "games",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "startAt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "duration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isOver",
+          "type": "bool"
+        },
+        {
+          "internalType": "address",
+          "name": "closestPlayer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "closestDistance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalDeposit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "treasureHash",
+          "type": "bytes32"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "coordinateId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "player",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "x",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "y",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct zkTreasure.Coordinate",
+          "name": "treasureCoordinate",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bool",
+          "name": "treasureCoordinateVerified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCoordinate",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "coordinateId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "player",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "x",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "y",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct zkTreasure.Coordinate[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getGame",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "startAt",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "duration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address[]",
+              "name": "players",
+              "type": "address[]"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "coordinateId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "player",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "x",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "y",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct zkTreasure.Coordinate[]",
+              "name": "coordinates",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "isOver",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "closestPlayer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "closestDistance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalDeposit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "treasureHash",
+              "type": "bytes32"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "coordinateId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "player",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "x",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "y",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct zkTreasure.Coordinate",
+              "name": "treasureCoordinate",
+              "type": "tuple"
+            },
+            {
+              "internalType": "bool",
+              "name": "treasureCoordinateVerified",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct zkTreasure.Game",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nextCoordinateId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nextGameId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setWinner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        }
+      ],
+      "name": "startGame",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "coordinateId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "player",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "x",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "y",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct zkTreasure.Coordinate",
+          "name": "_treasureCoordinate",
+          "type": "tuple"
+        }
+      ],
+      "name": "verifyTreasureCoordinate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gameId",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x56f495aff348f6fdfd88f61463bfc89d087fa20f1f23b89651ae14ee697fff98",
+  "receipt": {
+    "to": null,
+    "from": "0x150f4f0A12dA2fC8aEEbE377ba835e97754700E0",
+    "contractAddress": "0x97A8fd9494f45AeDcD17a705a10Ac703c4e4377D",
+    "transactionIndex": 28,
+    "gasUsed": "1813769",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x0eefd5741e81f448ffb4f46004ae3cfd2bfec7cc6401b31a6d505df71d4a2c2c",
+    "transactionHash": "0x56f495aff348f6fdfd88f61463bfc89d087fa20f1f23b89651ae14ee697fff98",
+    "logs": [],
+    "blockNumber": 6562979,
+    "cumulativeGasUsed": "12533231",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "77b0a8580f773bfdd249f12e36bc4546",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newFee\",\"type\":\"uint256\"}],\"name\":\"changeEntranceFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"changeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"coordinates\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_y\",\"type\":\"uint256\"}],\"name\":\"createCoordinate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_duration\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_treasureHash\",\"type\":\"bytes32\"}],\"name\":\"createGame\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"}],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"entranceFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"internalType\":\"struct zkTreasure.Coordinate\",\"name\":\"_treasureCoordinate\",\"type\":\"tuple\"}],\"name\":\"finishGame\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"}],\"name\":\"fraudProofCheck\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"games\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"startAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"duration\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isOver\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"closestPlayer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"closestDistance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalDeposit\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"treasureHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"internalType\":\"struct zkTreasure.Coordinate\",\"name\":\"treasureCoordinate\",\"type\":\"tuple\"},{\"internalType\":\"bool\",\"name\":\"treasureCoordinateVerified\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"}],\"name\":\"getCoordinate\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"internalType\":\"struct zkTreasure.Coordinate[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"}],\"name\":\"getGame\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"startAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"duration\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"players\",\"type\":\"address[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"internalType\":\"struct zkTreasure.Coordinate[]\",\"name\":\"coordinates\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"isOver\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"closestPlayer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"closestDistance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalDeposit\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"treasureHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"internalType\":\"struct zkTreasure.Coordinate\",\"name\":\"treasureCoordinate\",\"type\":\"tuple\"},{\"internalType\":\"bool\",\"name\":\"treasureCoordinateVerified\",\"type\":\"bool\"}],\"internalType\":\"struct zkTreasure.Game\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nextCoordinateId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nextGameId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"}],\"name\":\"setWinner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"}],\"name\":\"startGame\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"coordinateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"internalType\":\"struct zkTreasure.Coordinate\",\"name\":\"_treasureCoordinate\",\"type\":\"tuple\"}],\"name\":\"verifyTreasureCoordinate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gameId\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Coordinate.sol\":\"zkTreasure\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Coordinate.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.24;\\n\\ncontract zkTreasure {\\n\\n    struct Coordinate {\\n        uint256 coordinateId;\\n        address player;\\n        uint256 x;\\n        uint256 y;\\n    }\\n\\n    struct Game {\\n        string name;\\n        string description;\\n        uint256 startAt;\\n        uint256 duration;\\n        address [] players;\\n        Coordinate[] coordinates;\\n        bool isOver;\\n        address closestPlayer;\\n        uint256 closestDistance;\\n        uint256 totalDeposit;\\n        bytes32 treasureHash;\\n        Coordinate treasureCoordinate;\\n        bool treasureCoordinateVerified;\\n    }\\n\\n    Game[] public games;\\n    mapping(address => Coordinate[]) public coordinates;\\n\\n    uint256 public nextGameId;\\n    uint256 public nextCoordinateId;\\n    address public owner;\\n    uint256 public entranceFee;\\n\\n    constructor() {\\n        owner = msg.sender;\\n        entranceFee = 0.05 ether;\\n    }\\n\\n    modifier onlyOwner() {\\n        require(msg.sender == owner, \\\"not authorized\\\");\\n        _;\\n    }\\n\\n    // modifier checkGameId(uint256 _gameId) {\\n    //     require(games[_gameId].length > 0, \\\"Game does not exist\\\");\\n    //     _;\\n    // }\\n\\n    function changeOwner(address _newOwner) external onlyOwner { // Change the owner\\n        owner = _newOwner;\\n    }\\n\\n    function changeEntranceFee(uint256 _newFee) external onlyOwner { // Change the entrance fee\\n        for (uint i = 0; i < games.length; i++) { // Check if there are still players in the game\\n            require(games[i].totalDeposit == 0, \\\"There are still players in the game\\\");\\n        }\\n        entranceFee = _newFee; // If not, change the entrance fee\\n    }\\n\\n    function createGame(string memory _name, string memory _description, uint256 _duration, bytes32 _treasureHash) external onlyOwner () {\\n        // Create a new game\\n        uint256 gameId = nextGameId;\\n        games.push(); // This creates a new empty Game struct in storage\\n        Game storage newGame = games[gameId];\\n        \\n        newGame.name = _name;\\n        newGame.description = _description;\\n        newGame.startAt = 0;\\n        newGame.duration = _duration;\\n        newGame.isOver = false;\\n        newGame.closestPlayer = address(0);\\n        newGame.closestDistance = type(uint256).max;\\n        newGame.totalDeposit = 0;\\n        newGame.treasureHash = _treasureHash;\\n        newGame.treasureCoordinateVerified = false;\\n        \\n        // Initialize the treasureCoordinate\\n        newGame.treasureCoordinate = Coordinate({\\n            coordinateId: 0,\\n            player: address(0),\\n            x: 0,\\n            y: 0\\n        });\\n        \\n        nextGameId++;\\n    }\\n\\n    function getGame(uint256 _gameId) public view returns (Game memory) { // Get a game\\n        return games[_gameId];\\n    }\\n\\n    function startGame(uint256 _gameId) external onlyOwner () { // Start the game\\n        assert(games[_gameId].isOver == false); // The game should not have started\\n        assert(games[_gameId].startAt == 0);\\n        games[_gameId].startAt = block.timestamp;\\n    }\\n\\n    function finishGame(uint256 _gameId, Coordinate memory _treasureCoordinate) onlyOwner external { // Finish the game\\n        assert(games[_gameId].isOver == false);\\n        assert(games[_gameId].startAt + games[_gameId].duration <= block.timestamp);\\n        games[_gameId].treasureCoordinate = _treasureCoordinate;\\n        games[_gameId].isOver = true;\\n    }\\n\\n    function createCoordinate(uint256 _gameId, uint256 _x, uint256 _y) external  { // Create a new coordinate\\n        assert(games[_gameId].isOver == false); // The game should be ongoing\\n        assert(games[_gameId].startAt != 0);\\n        // TODO player should belong to a game\\n        uint256 coordinateId = nextCoordinateId;\\n        Coordinate memory newCoordinate = Coordinate(coordinateId, msg.sender, _x, _y);\\n        games[_gameId].coordinates.push(newCoordinate);\\n        coordinates[msg.sender].push(newCoordinate);\\n        nextCoordinateId++;\\n    }\\n\\n    function getCoordinate(uint256 _gameId) public view returns (Coordinate[] memory) { // Get all coordinates of a game\\n        return games[_gameId].coordinates;\\n    }\\n\\n    function verifyTreasureCoordinate(uint256 _gameId, Coordinate memory _treasureCoordinate) external { // Verify the treasure coordinate\\n        require(games[_gameId].isOver == true, \\\"The game should be over\\\");\\n        require(games[_gameId].treasureCoordinateVerified == false, \\\"The treasure coordinate is already verified\\\");\\n        require(games[_gameId].treasureHash == keccak256(abi.encodePacked(_treasureCoordinate.x, _treasureCoordinate.y)), \\\"The treasure coordinate is wrong\\\");\\n        games[_gameId].treasureCoordinateVerified = true;\\n    }\\n\\n    function deposit(uint _gameId) external payable { // Deposit the entrance fee\\n        require(msg.value >= entranceFee, \\\"The amount shoud be more than entranceFee.\\\");\\n        games[_gameId].players.push(msg.sender);\\n        games[_gameId].totalDeposit += msg.value;\\n    }\\n\\n    function withdraw(uint256 _gameId) public onlyOwner payable { // Send rewards to the winner\\n        (bool success, ) = games[_gameId].closestPlayer.call{value: games[_gameId].totalDeposit}(\\\"\\\");\\n        require(success, \\\"Failed to send Rewards\\\");\\n    }\\n\\n    function sqrt(uint x) internal pure returns (uint y) {\\n        uint z = (x + 1) / 2;\\n        y = x;\\n        while (z < y) {\\n            y = z;\\n            z = (x / z + z) / 2;\\n        }\\n    }\\n\\n    function fraudProofCheck(uint256 _gameId, uint256 coordinateId) external { // Check if a player is cheating\\n        // Here we check if the player is the closest to the treasure\\n        require(games[_gameId].treasureCoordinateVerified == true, \\\"The treasure coordinate is not verified\\\");\\n\\n        uint256 inputX = games[_gameId].coordinates[coordinateId].x;\\n        uint256 inputY = games[_gameId].coordinates[coordinateId].y;\\n        uint256 treasureX = games[_gameId].treasureCoordinate.x;\\n        uint256 treasureY = games[_gameId].treasureCoordinate.y;\\n        uint256 distance = sqrt((inputX - treasureX) ** 2 + (inputY - treasureY) ** 2);\\n        if(distance < distance) {\\n            games[_gameId].closestPlayer = msg.sender;\\n            games[_gameId].closestDistance = distance;\\n        }\\n    }\\n\\n    function setWinner(uint256 _gameId) external onlyOwner () { // Set the winner\\n        // Here we compute the winner\\n        assert(games[_gameId].isOver == true); // The game should be over\\n        //fraudProofCheck();\\n        withdraw(_gameId);\\n    }\\n}\",\"keccak256\":\"0xa4d8a5087b7b0b1e4c260d1a536f3a6f2c3cc73613910443ae51f9d15a001f6a\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50600480546001600160a01b0319163317905566b1a2bc2ec50000600555611f0a8061003d6000396000f3fe6080604052600436106101145760003560e01c8063a2f77bcc116100a0578063c9c73a5f11610064578063c9c73a5f14610335578063e1ab5a1614610355578063e5ed1d591461036b578063e65998eb1461038b578063ffa3de44146103ab57600080fd5b8063a2f77bcc14610277578063a6f9dae1146102a4578063b135bbb0146102c4578063b6b55f25146102da578063c85a58ff146102ed57600080fd5b806352337242116100e757806352337242146101ae57806359c309f4146101db578063649677e1146101fb57806383cfd07c1461021f5780638da5cb5b1461023f57600080fd5b80630df7160214610119578063117a5b901461013b5780632e1a7d4d1461017b57806332f692e11461018e575b600080fd5b34801561012557600080fd5b50610139610134366004611688565b6103cb565b005b34801561014757600080fd5b5061015b610156366004611688565b610445565b6040516101729b9a99989796959493929190611713565b60405180910390f35b610139610189366004611688565b610603565b34801561019a57600080fd5b506101396101a936600461179a565b610727565b3480156101ba57600080fd5b506101ce6101c9366004611688565b61089c565b60405161017291906117c6565b3480156101e757600080fd5b506101396101f6366004611846565b61094a565b34801561020757600080fd5b5061021160055481565b604051908152602001610172565b34801561022b57600080fd5b5061013961023a3660046118d0565b610abc565b34801561024b57600080fd5b5060045461025f906001600160a01b031681565b6040516001600160a01b039091168152602001610172565b34801561028357600080fd5b50610297610292366004611688565b610c77565b6040516101729190611972565b3480156102b057600080fd5b506101396102bf366004611a7e565b610f71565b3480156102d057600080fd5b5061021160025481565b6101396102e8366004611688565b610fbd565b3480156102f957600080fd5b5061030d610308366004611aa0565b6110a7565b604080519485526001600160a01b039093166020850152918301526060820152608001610172565b34801561034157600080fd5b50610139610350366004611688565b6110f6565b34801561036157600080fd5b5061021160035481565b34801561037757600080fd5b50610139610386366004611688565b6111bb565b34801561039757600080fd5b506101396103a6366004611846565b61127c565b3480156103b757600080fd5b506101396103c6366004611b57565b611469565b6004546001600160a01b031633146103fe5760405162461bcd60e51b81526004016103f590611bcb565b60405180910390fd5b6000818154811061041157610411611bf3565b600091825260209091206006600f90920201015460ff16151560011461043957610439611c09565b61044281610603565b50565b6000818154811061045557600080fd5b90600052602060002090600f020160009150905080600001805461047890611c1f565b80601f01602080910402602001604051908101604052809291908181526020018280546104a490611c1f565b80156104f15780601f106104c6576101008083540402835291602001916104f1565b820191906000526020600020905b8154815290600101906020018083116104d457829003601f168201915b50505050509080600101805461050690611c1f565b80601f016020809104026020016040519081016040528092919081815260200182805461053290611c1f565b801561057f5780601f106105545761010080835404028352916020019161057f565b820191906000526020600020905b81548152906001019060200180831161056257829003601f168201915b50505060028401546003850154600686015460078701546008880154600989015460408051608081018252600a8c01548152600b8c01546001600160a01b039081166020830152600c8d015492820192909252600d8c01546060820152600e909b0154999a969995985060ff8086169850610100909504169592949193909291168b565b6004546001600160a01b0316331461062d5760405162461bcd60e51b81526004016103f590611bcb565b600080828154811061064157610641611bf3565b90600052602060002090600f020160060160019054906101000a90046001600160a01b03166001600160a01b03166000838154811061068257610682611bf3565b90600052602060002090600f02016008015460405160006040518083038185875af1925050503d80600081146106d4576040519150601f19603f3d011682016040523d82523d6000602084013e6106d9565b606091505b50509050806107235760405162461bcd60e51b81526020600482015260166024820152754661696c656420746f2073656e64205265776172647360501b60448201526064016103f5565b5050565b6000838154811061073a5761073a611bf3565b600091825260209091206006600f90920201015460ff161561075e5761075e611c09565b6000838154811061077157610771611bf3565b90600052602060002090600f02016002015460000361079257610792611c09565b600354604080516080810182528281523360208201529081018490526060810183905260008054869081106107c9576107c9611bf3565b600091825260208083206005600f909302019190910180546001818101835591845282842085516004928302909101908155858401805182850180546001600160a01b039283166001600160a01b0319918216179091556040808a01805160028088019190915560608c018051600398890155338c52898b52928b208054808b018255908c52998b208c519a909802909701988955935196880180549790931696909116959095179055519184019190915590519181019190915580549161089083611c69565b91905055505050505050565b6060600082815481106108b1576108b1611bf3565b90600052602060002090600f0201600501805480602002602001604051908101604052809291908181526020016000905b8282101561093f5760008481526020908190206040805160808101825260048602909201805483526001808201546001600160a01b03168486015260028201549284019290925260030154606083015290835290920191016108e2565b505050509050919050565b6004546001600160a01b031633146109745760405162461bcd60e51b81526004016103f590611bcb565b6000828154811061098757610987611bf3565b600091825260209091206006600f90920201015460ff16156109ab576109ab611c09565b42600083815481106109bf576109bf611bf3565b90600052602060002090600f020160030154600084815481106109e4576109e4611bf3565b90600052602060002090600f020160020154610a009190611c82565b1115610a0e57610a0e611c09565b8060008381548110610a2257610a22611bf3565b90600052602060002090600f0201600a016000820151816000015560208201518160010160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506040820151816002015560608201518160030155905050600160008381548110610a9657610a96611bf3565b60009182526020909120600f90910201600601805460ff19169115159190911790555050565b60008281548110610acf57610acf611bf3565b60009182526020909120600e600f90920201015460ff161515600114610b475760405162461bcd60e51b815260206004820152602760248201527f54686520747265617375726520636f6f7264696e617465206973206e6f742076604482015266195c9a599a595960ca1b60648201526084016103f5565b6000808381548110610b5b57610b5b611bf3565b90600052602060002090600f02016005018281548110610b7d57610b7d611bf3565b90600052602060002090600402016002015490506000808481548110610ba557610ba5611bf3565b90600052602060002090600f02016005018381548110610bc757610bc7611bf3565b90600052602060002090600402016003015490506000808581548110610bef57610bef611bf3565b90600052602060002090600f0201600a016002015490506000808681548110610c1a57610c1a611bf3565b600091825260208220600d600f9092020101549150610c6d6002610c3e8487611c9b565b610c489190611d92565b6002610c548689611c9b565b610c5e9190611d92565b610c689190611c82565b611587565b5050505050505050565b610c7f6115e0565b60008281548110610c9257610c92611bf3565b90600052602060002090600f0201604051806101a0016040529081600082018054610cbc90611c1f565b80601f0160208091040260200160405190810160405280929190818152602001828054610ce890611c1f565b8015610d355780601f10610d0a57610100808354040283529160200191610d35565b820191906000526020600020905b815481529060010190602001808311610d1857829003601f168201915b50505050508152602001600182018054610d4e90611c1f565b80601f0160208091040260200160405190810160405280929190818152602001828054610d7a90611c1f565b8015610dc75780601f10610d9c57610100808354040283529160200191610dc7565b820191906000526020600020905b815481529060010190602001808311610daa57829003601f168201915b50505050508152602001600282015481526020016003820154815260200160048201805480602002602001604051908101604052809291908181526020018280548015610e3d57602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610e1f575b5050505050815260200160058201805480602002602001604051908101604052809291908181526020016000905b82821015610ec85760008481526020908190206040805160808101825260048602909201805483526001808201546001600160a01b0316848601526002820154928401929092526003015460608301529083529092019101610e6b565b50505090825250600682015460ff80821615156020808501919091526001600160a01b03610100909304831660408086019190915260078601546060808701919091526008870154608080880191909152600988015460a088015282519081018352600a8801548152600b88015490951692850192909252600c86015490840152600d8501549083015260c0830191909152600e90920154909116151560e09091015292915050565b6004546001600160a01b03163314610f9b5760405162461bcd60e51b81526004016103f590611bcb565b600480546001600160a01b0319166001600160a01b0392909216919091179055565b6005543410156110225760405162461bcd60e51b815260206004820152602a60248201527f54686520616d6f756e742073686f7564206265206d6f7265207468616e20656e6044820152693a3930b731b2a332b29760b11b60648201526084016103f5565b6000818154811061103557611035611bf3565b600091825260208083206004600f909302019190910180546001810182559083529082200180546001600160a01b0319163317905580543491908390811061107f5761107f611bf3565b90600052602060002090600f0201600801600082825461109f9190611c82565b909155505050565b600160205281600052604060002081815481106110c357600080fd5b600091825260209091206004909102018054600182015460028301546003909301549194506001600160a01b0316925084565b6004546001600160a01b031633146111205760405162461bcd60e51b81526004016103f590611bcb565b60005b6000548110156111b5576000818154811061114057611140611bf3565b90600052602060002090600f0201600801546000146111ad5760405162461bcd60e51b815260206004820152602360248201527f546865726520617265207374696c6c20706c617965727320696e207468652067604482015262616d6560e81b60648201526084016103f5565b600101611123565b50600555565b6004546001600160a01b031633146111e55760405162461bcd60e51b81526004016103f590611bcb565b600081815481106111f8576111f8611bf3565b600091825260209091206006600f90920201015460ff161561121c5761121c611c09565b6000818154811061122f5761122f611bf3565b90600052602060002090600f02016002015460001461125057611250611c09565b426000828154811061126457611264611bf3565b90600052602060002090600f02016002018190555050565b6000828154811061128f5761128f611bf3565b600091825260209091206006600f90920201015460ff1615156001146112f75760405162461bcd60e51b815260206004820152601760248201527f5468652067616d652073686f756c64206265206f76657200000000000000000060448201526064016103f5565b6000828154811061130a5761130a611bf3565b60009182526020909120600e600f90920201015460ff16156113825760405162461bcd60e51b815260206004820152602b60248201527f54686520747265617375726520636f6f7264696e61746520697320616c72656160448201526a191e481d995c9a599a595960aa1b60648201526084016103f5565b806040015181606001516040516020016113a6929190918252602082015260400190565b60405160208183030381529060405280519060200120600083815481106113cf576113cf611bf3565b90600052602060002090600f0201600901541461142e5760405162461bcd60e51b815260206004820181905260248201527f54686520747265617375726520636f6f7264696e6174652069732077726f6e6760448201526064016103f5565b60016000838154811061144357611443611bf3565b60009182526020909120600f90910201600e01805460ff19169115159190911790555050565b6004546001600160a01b031633146114935760405162461bcd60e51b81526004016103f590611bcb565b600254600080546001018082558180528190839081106114b5576114b5611bf3565b60009182526020909120600f909102019050806114d28782611df2565b50600181016114e18682611df2565b5060006002808301829055600383018690556006830180546001600160a81b031916905560001960078401556008830182905560098301859055600e8301805460ff191690556040805160808101825283815260208101849052908101839052606001829052600a8301829055600b830180546001600160a01b0319169055600c8301829055600d830182905580549161157a83611c69565b9190505550505050505050565b6000806002611597846001611c82565b6115a19190611eb2565b90508291505b818110156115da579050806002816115bf8186611eb2565b6115c99190611c82565b6115d39190611eb2565b90506115a7565b50919050565b604051806101a0016040528060608152602001606081526020016000815260200160008152602001606081526020016060815260200160001515815260200160006001600160a01b0316815260200160008152602001600081526020016000801916815260200161167b60405180608001604052806000815260200160006001600160a01b0316815260200160008152602001600081525090565b8152600060209091015290565b60006020828403121561169a57600080fd5b5035919050565b6000815180845260005b818110156116c7576020818501810151868301820152016116ab565b506000602082860101526020601f19601f83011685010191505092915050565b805182526020808201516001600160a01b03169083015260408082015190830152606090810151910152565b60006101c08083526117278184018f6116a1565b9050828103602084015261173b818e6116a1565b9150508a6040830152896060830152881515608083015260018060a01b03881660a08301528660c08301528560e0830152846101008301526117816101208301856116e7565b8215156101a08301529c9b505050505050505050505050565b6000806000606084860312156117af57600080fd5b505081359360208301359350604090920135919050565b6020808252825182820181905260009190848201906040850190845b81811015611808576117f58385516116e7565b92840192608092909201916001016117e2565b50909695505050505050565b634e487b7160e01b600052604160045260246000fd5b80356001600160a01b038116811461184157600080fd5b919050565b60008082840360a081121561185a57600080fd5b833592506080601f198201121561187057600080fd5b506040516080810181811067ffffffffffffffff8211171561189457611894611814565b8060405250602084013581526118ac6040850161182a565b60208201526060840135604082015260808401356060820152809150509250929050565b600080604083850312156118e357600080fd5b50508035926020909101359150565b60008151808452602080850194506020840160005b8381101561192c5781516001600160a01b031687529582019590820190600101611907565b509495945050505050565b60008151808452602080850194506020840160005b8381101561192c5761195f8783516116e7565b608096909601959082019060010161194c565b60208152600082516102008060208501526119916102208501836116a1565b91506020850151601f19808685030160408701526119af84836116a1565b9350604087015160608701526060870151608087015260808701519150808685030160a08701526119e084836118f2565b935060a08701519150808685030160c0870152506119fe8382611937565b92505060c0850151611a1460e086018215159052565b5060e0850151610100611a31818701836001600160a01b03169052565b8601516101208681019190915286015161014080870191909152860151610160808701919091528601519050610180611a6c818701836116e7565b90950151151593019290925250919050565b600060208284031215611a9057600080fd5b611a998261182a565b9392505050565b60008060408385031215611ab357600080fd5b611abc8361182a565b946020939093013593505050565b600082601f830112611adb57600080fd5b813567ffffffffffffffff80821115611af657611af6611814565b604051601f8301601f19908116603f01168101908282118183101715611b1e57611b1e611814565b81604052838152866020858801011115611b3757600080fd5b836020870160208301376000602085830101528094505050505092915050565b60008060008060808587031215611b6d57600080fd5b843567ffffffffffffffff80821115611b8557600080fd5b611b9188838901611aca565b95506020870135915080821115611ba757600080fd5b50611bb487828801611aca565b949794965050505060408301359260600135919050565b6020808252600e908201526d1b9bdd08185d5d1a1bdc9a5e995960921b604082015260600190565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052600160045260246000fd5b600181811c90821680611c3357607f821691505b6020821081036115da57634e487b7160e01b600052602260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b600060018201611c7b57611c7b611c53565b5060010190565b80820180821115611c9557611c95611c53565b92915050565b81810381811115611c9557611c95611c53565b600181815b80851115611ce9578160001904821115611ccf57611ccf611c53565b80851615611cdc57918102915b93841c9390800290611cb3565b509250929050565b600082611d0057506001611c95565b81611d0d57506000611c95565b8160018114611d235760028114611d2d57611d49565b6001915050611c95565b60ff841115611d3e57611d3e611c53565b50506001821b611c95565b5060208310610133831016604e8410600b8410161715611d6c575081810a611c95565b611d768383611cae565b8060001904821115611d8a57611d8a611c53565b029392505050565b6000611a9960ff841683611cf1565b601f821115611ded576000816000526020600020601f850160051c81016020861015611dca5750805b601f850160051c820191505b81811015611de957828155600101611dd6565b5050505b505050565b815167ffffffffffffffff811115611e0c57611e0c611814565b611e2081611e1a8454611c1f565b84611da1565b602080601f831160018114611e555760008415611e3d5750858301515b600019600386901b1c1916600185901b178555611de9565b600085815260208120601f198616915b82811015611e8457888601518255948401946001909101908401611e65565b5085821015611ea25787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b600082611ecf57634e487b7160e01b600052601260045260246000fd5b50049056fea264697066735822122064e3c53e600dcd8a68c2175fa914f606374ef193fd20c19de96296d3c2b86d7d64736f6c63430008180033",
+  "deployedBytecode": "0x6080604052600436106101145760003560e01c8063a2f77bcc116100a0578063c9c73a5f11610064578063c9c73a5f14610335578063e1ab5a1614610355578063e5ed1d591461036b578063e65998eb1461038b578063ffa3de44146103ab57600080fd5b8063a2f77bcc14610277578063a6f9dae1146102a4578063b135bbb0146102c4578063b6b55f25146102da578063c85a58ff146102ed57600080fd5b806352337242116100e757806352337242146101ae57806359c309f4146101db578063649677e1146101fb57806383cfd07c1461021f5780638da5cb5b1461023f57600080fd5b80630df7160214610119578063117a5b901461013b5780632e1a7d4d1461017b57806332f692e11461018e575b600080fd5b34801561012557600080fd5b50610139610134366004611688565b6103cb565b005b34801561014757600080fd5b5061015b610156366004611688565b610445565b6040516101729b9a99989796959493929190611713565b60405180910390f35b610139610189366004611688565b610603565b34801561019a57600080fd5b506101396101a936600461179a565b610727565b3480156101ba57600080fd5b506101ce6101c9366004611688565b61089c565b60405161017291906117c6565b3480156101e757600080fd5b506101396101f6366004611846565b61094a565b34801561020757600080fd5b5061021160055481565b604051908152602001610172565b34801561022b57600080fd5b5061013961023a3660046118d0565b610abc565b34801561024b57600080fd5b5060045461025f906001600160a01b031681565b6040516001600160a01b039091168152602001610172565b34801561028357600080fd5b50610297610292366004611688565b610c77565b6040516101729190611972565b3480156102b057600080fd5b506101396102bf366004611a7e565b610f71565b3480156102d057600080fd5b5061021160025481565b6101396102e8366004611688565b610fbd565b3480156102f957600080fd5b5061030d610308366004611aa0565b6110a7565b604080519485526001600160a01b039093166020850152918301526060820152608001610172565b34801561034157600080fd5b50610139610350366004611688565b6110f6565b34801561036157600080fd5b5061021160035481565b34801561037757600080fd5b50610139610386366004611688565b6111bb565b34801561039757600080fd5b506101396103a6366004611846565b61127c565b3480156103b757600080fd5b506101396103c6366004611b57565b611469565b6004546001600160a01b031633146103fe5760405162461bcd60e51b81526004016103f590611bcb565b60405180910390fd5b6000818154811061041157610411611bf3565b600091825260209091206006600f90920201015460ff16151560011461043957610439611c09565b61044281610603565b50565b6000818154811061045557600080fd5b90600052602060002090600f020160009150905080600001805461047890611c1f565b80601f01602080910402602001604051908101604052809291908181526020018280546104a490611c1f565b80156104f15780601f106104c6576101008083540402835291602001916104f1565b820191906000526020600020905b8154815290600101906020018083116104d457829003601f168201915b50505050509080600101805461050690611c1f565b80601f016020809104026020016040519081016040528092919081815260200182805461053290611c1f565b801561057f5780601f106105545761010080835404028352916020019161057f565b820191906000526020600020905b81548152906001019060200180831161056257829003601f168201915b50505060028401546003850154600686015460078701546008880154600989015460408051608081018252600a8c01548152600b8c01546001600160a01b039081166020830152600c8d015492820192909252600d8c01546060820152600e909b0154999a969995985060ff8086169850610100909504169592949193909291168b565b6004546001600160a01b0316331461062d5760405162461bcd60e51b81526004016103f590611bcb565b600080828154811061064157610641611bf3565b90600052602060002090600f020160060160019054906101000a90046001600160a01b03166001600160a01b03166000838154811061068257610682611bf3565b90600052602060002090600f02016008015460405160006040518083038185875af1925050503d80600081146106d4576040519150601f19603f3d011682016040523d82523d6000602084013e6106d9565b606091505b50509050806107235760405162461bcd60e51b81526020600482015260166024820152754661696c656420746f2073656e64205265776172647360501b60448201526064016103f5565b5050565b6000838154811061073a5761073a611bf3565b600091825260209091206006600f90920201015460ff161561075e5761075e611c09565b6000838154811061077157610771611bf3565b90600052602060002090600f02016002015460000361079257610792611c09565b600354604080516080810182528281523360208201529081018490526060810183905260008054869081106107c9576107c9611bf3565b600091825260208083206005600f909302019190910180546001818101835591845282842085516004928302909101908155858401805182850180546001600160a01b039283166001600160a01b0319918216179091556040808a01805160028088019190915560608c018051600398890155338c52898b52928b208054808b018255908c52998b208c519a909802909701988955935196880180549790931696909116959095179055519184019190915590519181019190915580549161089083611c69565b91905055505050505050565b6060600082815481106108b1576108b1611bf3565b90600052602060002090600f0201600501805480602002602001604051908101604052809291908181526020016000905b8282101561093f5760008481526020908190206040805160808101825260048602909201805483526001808201546001600160a01b03168486015260028201549284019290925260030154606083015290835290920191016108e2565b505050509050919050565b6004546001600160a01b031633146109745760405162461bcd60e51b81526004016103f590611bcb565b6000828154811061098757610987611bf3565b600091825260209091206006600f90920201015460ff16156109ab576109ab611c09565b42600083815481106109bf576109bf611bf3565b90600052602060002090600f020160030154600084815481106109e4576109e4611bf3565b90600052602060002090600f020160020154610a009190611c82565b1115610a0e57610a0e611c09565b8060008381548110610a2257610a22611bf3565b90600052602060002090600f0201600a016000820151816000015560208201518160010160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506040820151816002015560608201518160030155905050600160008381548110610a9657610a96611bf3565b60009182526020909120600f90910201600601805460ff19169115159190911790555050565b60008281548110610acf57610acf611bf3565b60009182526020909120600e600f90920201015460ff161515600114610b475760405162461bcd60e51b815260206004820152602760248201527f54686520747265617375726520636f6f7264696e617465206973206e6f742076604482015266195c9a599a595960ca1b60648201526084016103f5565b6000808381548110610b5b57610b5b611bf3565b90600052602060002090600f02016005018281548110610b7d57610b7d611bf3565b90600052602060002090600402016002015490506000808481548110610ba557610ba5611bf3565b90600052602060002090600f02016005018381548110610bc757610bc7611bf3565b90600052602060002090600402016003015490506000808581548110610bef57610bef611bf3565b90600052602060002090600f0201600a016002015490506000808681548110610c1a57610c1a611bf3565b600091825260208220600d600f9092020101549150610c6d6002610c3e8487611c9b565b610c489190611d92565b6002610c548689611c9b565b610c5e9190611d92565b610c689190611c82565b611587565b5050505050505050565b610c7f6115e0565b60008281548110610c9257610c92611bf3565b90600052602060002090600f0201604051806101a0016040529081600082018054610cbc90611c1f565b80601f0160208091040260200160405190810160405280929190818152602001828054610ce890611c1f565b8015610d355780601f10610d0a57610100808354040283529160200191610d35565b820191906000526020600020905b815481529060010190602001808311610d1857829003601f168201915b50505050508152602001600182018054610d4e90611c1f565b80601f0160208091040260200160405190810160405280929190818152602001828054610d7a90611c1f565b8015610dc75780601f10610d9c57610100808354040283529160200191610dc7565b820191906000526020600020905b815481529060010190602001808311610daa57829003601f168201915b50505050508152602001600282015481526020016003820154815260200160048201805480602002602001604051908101604052809291908181526020018280548015610e3d57602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610e1f575b5050505050815260200160058201805480602002602001604051908101604052809291908181526020016000905b82821015610ec85760008481526020908190206040805160808101825260048602909201805483526001808201546001600160a01b0316848601526002820154928401929092526003015460608301529083529092019101610e6b565b50505090825250600682015460ff80821615156020808501919091526001600160a01b03610100909304831660408086019190915260078601546060808701919091526008870154608080880191909152600988015460a088015282519081018352600a8801548152600b88015490951692850192909252600c86015490840152600d8501549083015260c0830191909152600e90920154909116151560e09091015292915050565b6004546001600160a01b03163314610f9b5760405162461bcd60e51b81526004016103f590611bcb565b600480546001600160a01b0319166001600160a01b0392909216919091179055565b6005543410156110225760405162461bcd60e51b815260206004820152602a60248201527f54686520616d6f756e742073686f7564206265206d6f7265207468616e20656e6044820152693a3930b731b2a332b29760b11b60648201526084016103f5565b6000818154811061103557611035611bf3565b600091825260208083206004600f909302019190910180546001810182559083529082200180546001600160a01b0319163317905580543491908390811061107f5761107f611bf3565b90600052602060002090600f0201600801600082825461109f9190611c82565b909155505050565b600160205281600052604060002081815481106110c357600080fd5b600091825260209091206004909102018054600182015460028301546003909301549194506001600160a01b0316925084565b6004546001600160a01b031633146111205760405162461bcd60e51b81526004016103f590611bcb565b60005b6000548110156111b5576000818154811061114057611140611bf3565b90600052602060002090600f0201600801546000146111ad5760405162461bcd60e51b815260206004820152602360248201527f546865726520617265207374696c6c20706c617965727320696e207468652067604482015262616d6560e81b60648201526084016103f5565b600101611123565b50600555565b6004546001600160a01b031633146111e55760405162461bcd60e51b81526004016103f590611bcb565b600081815481106111f8576111f8611bf3565b600091825260209091206006600f90920201015460ff161561121c5761121c611c09565b6000818154811061122f5761122f611bf3565b90600052602060002090600f02016002015460001461125057611250611c09565b426000828154811061126457611264611bf3565b90600052602060002090600f02016002018190555050565b6000828154811061128f5761128f611bf3565b600091825260209091206006600f90920201015460ff1615156001146112f75760405162461bcd60e51b815260206004820152601760248201527f5468652067616d652073686f756c64206265206f76657200000000000000000060448201526064016103f5565b6000828154811061130a5761130a611bf3565b60009182526020909120600e600f90920201015460ff16156113825760405162461bcd60e51b815260206004820152602b60248201527f54686520747265617375726520636f6f7264696e61746520697320616c72656160448201526a191e481d995c9a599a595960aa1b60648201526084016103f5565b806040015181606001516040516020016113a6929190918252602082015260400190565b60405160208183030381529060405280519060200120600083815481106113cf576113cf611bf3565b90600052602060002090600f0201600901541461142e5760405162461bcd60e51b815260206004820181905260248201527f54686520747265617375726520636f6f7264696e6174652069732077726f6e6760448201526064016103f5565b60016000838154811061144357611443611bf3565b60009182526020909120600f90910201600e01805460ff19169115159190911790555050565b6004546001600160a01b031633146114935760405162461bcd60e51b81526004016103f590611bcb565b600254600080546001018082558180528190839081106114b5576114b5611bf3565b60009182526020909120600f909102019050806114d28782611df2565b50600181016114e18682611df2565b5060006002808301829055600383018690556006830180546001600160a81b031916905560001960078401556008830182905560098301859055600e8301805460ff191690556040805160808101825283815260208101849052908101839052606001829052600a8301829055600b830180546001600160a01b0319169055600c8301829055600d830182905580549161157a83611c69565b9190505550505050505050565b6000806002611597846001611c82565b6115a19190611eb2565b90508291505b818110156115da579050806002816115bf8186611eb2565b6115c99190611c82565b6115d39190611eb2565b90506115a7565b50919050565b604051806101a0016040528060608152602001606081526020016000815260200160008152602001606081526020016060815260200160001515815260200160006001600160a01b0316815260200160008152602001600081526020016000801916815260200161167b60405180608001604052806000815260200160006001600160a01b0316815260200160008152602001600081525090565b8152600060209091015290565b60006020828403121561169a57600080fd5b5035919050565b6000815180845260005b818110156116c7576020818501810151868301820152016116ab565b506000602082860101526020601f19601f83011685010191505092915050565b805182526020808201516001600160a01b03169083015260408082015190830152606090810151910152565b60006101c08083526117278184018f6116a1565b9050828103602084015261173b818e6116a1565b9150508a6040830152896060830152881515608083015260018060a01b03881660a08301528660c08301528560e0830152846101008301526117816101208301856116e7565b8215156101a08301529c9b505050505050505050505050565b6000806000606084860312156117af57600080fd5b505081359360208301359350604090920135919050565b6020808252825182820181905260009190848201906040850190845b81811015611808576117f58385516116e7565b92840192608092909201916001016117e2565b50909695505050505050565b634e487b7160e01b600052604160045260246000fd5b80356001600160a01b038116811461184157600080fd5b919050565b60008082840360a081121561185a57600080fd5b833592506080601f198201121561187057600080fd5b506040516080810181811067ffffffffffffffff8211171561189457611894611814565b8060405250602084013581526118ac6040850161182a565b60208201526060840135604082015260808401356060820152809150509250929050565b600080604083850312156118e357600080fd5b50508035926020909101359150565b60008151808452602080850194506020840160005b8381101561192c5781516001600160a01b031687529582019590820190600101611907565b509495945050505050565b60008151808452602080850194506020840160005b8381101561192c5761195f8783516116e7565b608096909601959082019060010161194c565b60208152600082516102008060208501526119916102208501836116a1565b91506020850151601f19808685030160408701526119af84836116a1565b9350604087015160608701526060870151608087015260808701519150808685030160a08701526119e084836118f2565b935060a08701519150808685030160c0870152506119fe8382611937565b92505060c0850151611a1460e086018215159052565b5060e0850151610100611a31818701836001600160a01b03169052565b8601516101208681019190915286015161014080870191909152860151610160808701919091528601519050610180611a6c818701836116e7565b90950151151593019290925250919050565b600060208284031215611a9057600080fd5b611a998261182a565b9392505050565b60008060408385031215611ab357600080fd5b611abc8361182a565b946020939093013593505050565b600082601f830112611adb57600080fd5b813567ffffffffffffffff80821115611af657611af6611814565b604051601f8301601f19908116603f01168101908282118183101715611b1e57611b1e611814565b81604052838152866020858801011115611b3757600080fd5b836020870160208301376000602085830101528094505050505092915050565b60008060008060808587031215611b6d57600080fd5b843567ffffffffffffffff80821115611b8557600080fd5b611b9188838901611aca565b95506020870135915080821115611ba757600080fd5b50611bb487828801611aca565b949794965050505060408301359260600135919050565b6020808252600e908201526d1b9bdd08185d5d1a1bdc9a5e995960921b604082015260600190565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052600160045260246000fd5b600181811c90821680611c3357607f821691505b6020821081036115da57634e487b7160e01b600052602260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b600060018201611c7b57611c7b611c53565b5060010190565b80820180821115611c9557611c95611c53565b92915050565b81810381811115611c9557611c95611c53565b600181815b80851115611ce9578160001904821115611ccf57611ccf611c53565b80851615611cdc57918102915b93841c9390800290611cb3565b509250929050565b600082611d0057506001611c95565b81611d0d57506000611c95565b8160018114611d235760028114611d2d57611d49565b6001915050611c95565b60ff841115611d3e57611d3e611c53565b50506001821b611c95565b5060208310610133831016604e8410600b8410161715611d6c575081810a611c95565b611d768383611cae565b8060001904821115611d8a57611d8a611c53565b029392505050565b6000611a9960ff841683611cf1565b601f821115611ded576000816000526020600020601f850160051c81016020861015611dca5750805b601f850160051c820191505b81811015611de957828155600101611dd6565b5050505b505050565b815167ffffffffffffffff811115611e0c57611e0c611814565b611e2081611e1a8454611c1f565b84611da1565b602080601f831160018114611e555760008415611e3d5750858301515b600019600386901b1c1916600185901b178555611de9565b600085815260208120601f198616915b82811015611e8457888601518255948401946001909101908401611e65565b5085821015611ea25787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b600082611ecf57634e487b7160e01b600052601260045260246000fd5b50049056fea264697066735822122064e3c53e600dcd8a68c2175fa914f606374ef193fd20c19de96296d3c2b86d7d64736f6c63430008180033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 45,
+        "contract": "contracts/Coordinate.sol:zkTreasure",
+        "label": "games",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_array(t_struct(Game)41_storage)dyn_storage"
+      },
+      {
+        "astId": 51,
+        "contract": "contracts/Coordinate.sol:zkTreasure",
+        "label": "coordinates",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_array(t_struct(Coordinate)10_storage)dyn_storage)"
+      },
+      {
+        "astId": 53,
+        "contract": "contracts/Coordinate.sol:zkTreasure",
+        "label": "nextGameId",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 55,
+        "contract": "contracts/Coordinate.sol:zkTreasure",
+        "label": "nextCoordinateId",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 57,
+        "contract": "contracts/Coordinate.sol:zkTreasure",
+        "label": "owner",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 59,
+        "contract": "contracts/Coordinate.sol:zkTreasure",
+        "label": "entranceFee",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_struct(Coordinate)10_storage)dyn_storage": {
+        "base": "t_struct(Coordinate)10_storage",
+        "encoding": "dynamic_array",
+        "label": "struct zkTreasure.Coordinate[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_struct(Game)41_storage)dyn_storage": {
+        "base": "t_struct(Game)41_storage",
+        "encoding": "dynamic_array",
+        "label": "struct zkTreasure.Game[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_array(t_struct(Coordinate)10_storage)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct zkTreasure.Coordinate[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_struct(Coordinate)10_storage)dyn_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Coordinate)10_storage": {
+        "encoding": "inplace",
+        "label": "struct zkTreasure.Coordinate",
+        "members": [
+          {
+            "astId": 3,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "coordinateId",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 5,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "player",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 7,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "x",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "y",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_struct(Game)41_storage": {
+        "encoding": "inplace",
+        "label": "struct zkTreasure.Game",
+        "members": [
+          {
+            "astId": 12,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "name",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 14,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "description",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 16,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "startAt",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 18,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "duration",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 21,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "players",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 25,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "coordinates",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_array(t_struct(Coordinate)10_storage)dyn_storage"
+          },
+          {
+            "astId": 27,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "isOver",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_bool"
+          },
+          {
+            "astId": 29,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "closestPlayer",
+            "offset": 1,
+            "slot": "6",
+            "type": "t_address"
+          },
+          {
+            "astId": 31,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "closestDistance",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 33,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "totalDeposit",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 35,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "treasureHash",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 38,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "treasureCoordinate",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_struct(Coordinate)10_storage"
+          },
+          {
+            "astId": 40,
+            "contract": "contracts/Coordinate.sol:zkTreasure",
+            "label": "treasureCoordinateVerified",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "480"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
