@@ -1,80 +1,29 @@
-# 🏗 Scaffold-ETH 2
+This product is developped for ETH Tokyo 2024 Hackthon ( https://www.ethtokyo.com/ ).
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+The huckathon details are found at
+https://app.akindo.io/hackathons/3dXM7ZO2WsxvlkXp .
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+What it does
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+- We build a multi-play treasure hunt game, which is based on ZKP technology, as the project name says.
+  Prover sets a hidden treasure spot secretly, and users moves around on the map to find the spot.
+  Each user provides information about the move (source and destination positions), then Prover generates a ZK proof which shows if the move is towards the hidden spot (or apart from the spot),
+  and publishes the proof onto a blockchain.
+  (with this step, users are able to identify whether the move is towards a right direction to the treasure spot, while the spot location is not exposed)
+  A user decides on his/her next move, based on the published the proofs. Upon a preset time comes, a nearly user will be awarded.
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+The problem it solves
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+- Our problem is that how we can share a user's location is closer to the treasure spot location without exposing the spot location itself.
 
-## Requirements
+Challenges I ran into
 
-Before you begin, you need to install the following tools:
+- We took a long time to reach to this idea, while we set our domain as a kind of location plus ZKP.
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+Technologies I used
 
-## Quickstart
+- We used ZKP platform.
 
-To get started with Scaffold-ETH 2, follow the steps below:
+How we built it
 
-1. Install dependencies if it was skipped in CLI:
-
-```
-cd my-dapp-example
-yarn install
-```
-
-2. Run a local network in the first terminal:
-
-```
-yarn chain
-```
-
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
-
-3. On a second terminal, deploy the test contract:
-
-```
-yarn deploy
-```
-
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
-yarn start
-```
-
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
-
-Run smart contract test with `yarn hardhat:test`
-
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
-
-
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+- We divided our activities into two pieces, such as frontend and backend; the frontend team works mainly on map UI, the backend team works on ZK circuit and related libraries and contracts.
