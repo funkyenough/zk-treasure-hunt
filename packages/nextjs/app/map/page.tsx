@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldWatchContractEvent, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 // Function to transform coordinates to integers
 const transformCoordinatesToIntegers = (latitude: number, longitude: number) => {
@@ -34,6 +34,19 @@ export default function GeolocationMapPage() {
       document.head.removeChild(script);
     };
   }, []);
+
+  useScaffoldWatchContractEvent({
+    contractName: "zkTreasure",
+    eventName: "CoordinateCreated",
+
+    onLogs: logs => {
+      logs.map(log => {
+        const { coordinateId, player, x, y } = log.args;
+        console.log("📡 CoordinateCreated event:", coordinateId, player, x, y);
+      });
+      // execute verification
+    },
+  });
 
   const initializeMap = () => {
     if (window.google) {
