@@ -22,7 +22,7 @@ contract zkTreasure {
         uint256 totalDeposit;
     }
 
-    mapping(uint256 => Game[]) public games;
+    Game[] public games;
     mapping(address => Coordinate[]) public coordinates;
 
     uint256 public nextGameId;
@@ -40,10 +40,10 @@ contract zkTreasure {
         _;
     }
 
-    modifier checkGameId() {
-        require(games[_gameId].name != "", "Game does not exist");
-        _;
-    }
+    // modifier checkGameId(uint256 _gameId) {
+    //     require(games[_gameId].length > 0, "Game does not exist");
+    //     _;
+    // }
 
     function changeOwner(address _newOwner) external onlyOwner { // Change the owner
         owner = _newOwner;
@@ -56,7 +56,7 @@ contract zkTreasure {
         entranceFee = _newFee; // If not, change the entrance fee
     }
 
-    function createGame(string _name, string _description, uint256 _duration) external onlyOnwer () {
+    function createGame(string memory _name, string memory _description, uint256 _duration) external onlyOwner () {
         // Create a new game
         uint256 gameId = nextGameId;
         games[gameId] = Game(_name, _description, gameId);
@@ -70,7 +70,7 @@ contract zkTreasure {
         games[_gameId].startAt = block.timestamp;
     }
 
-    function finishGame(uint256 _gameId) external checkGameId () { // Finish the game
+    function finishGame(uint256 _gameId) external checkGameId() { // Finish the game
         assert(games[_gameId].isOver == false);
         assert(games[_gameId].startAt + games[_gameId].duration <= block.timestamp);
         games[_gameId].isOver = true;
@@ -87,7 +87,7 @@ contract zkTreasure {
     }
 
     function getCoordinate(uint256 _gameId) public view checkGameId returns (Coordinate[] memory) { // Get all coordinates of a game
-        return gameCoordinates[_gameId];
+        return games[_gameId].coordinates;
     }
 
     function getGame(uint256 _gameId) public view checkGameId returns (Game memory) { // Get a game
@@ -103,11 +103,12 @@ contract zkTreasure {
     function setWinner(uint256 _gameId) external onlyOwner checkGameId() { // Set the winner
         // Here we compute the winner
         assert(games[_gameId].isOver == true); // The game should be over
-        games[_gameId].winner = _winner;
+        //fraudProofCheck();
+        payment(_gameId);
     }
 
     function payment(uint256 _gameId) public onlyOwner payable { // Send rewards to the winner
-        (bool sent, bytes memory data) = _to.call{value: game[_gameId].totalDeposit}("");
+        (bool sent, bytes memory data) = games[_gameId].closestPlayer.call{value: games[_gameId].totalDeposit}("");
         require(sent, "Failed to send Rewards");
     }
 
@@ -115,5 +116,5 @@ contract zkTreasure {
         // Here we check if the player is the closest to the treasure
         uint256 x = games[_gameId].coordinates[games[_gameId].coordinates.length - 1].x;
         uint256 y = games[_gameId].coordinates[games[_gameId].coordinates.length - 1].y;
-        if 
     }
+}
