@@ -1,0 +1,11 @@
+{
+    "isCloser": {
+        "file": "isCloser",
+        "template": "isCloser",
+        "pubs": [
+            "treasureCoord",
+            "userPrevCoord",
+            "userCurrCoord"
+        ]
+    }
+}

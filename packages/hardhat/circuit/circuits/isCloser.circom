@@ -34,7 +34,7 @@ template isCloser() {
     isCloser <== lt.out;
 }
 
-component main {public [userPrevCoord, userCurrCoord]} = isCloser();
+// component main {public [userPrevCoord, userCurrCoord]} = isCloser();
 
 /* INPUT = {
     "treasureCoord": ["12345", "12345"],
