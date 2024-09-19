@@ -21,3 +21,10 @@ node_modules
 
 # cli
 dist
+
+*.ptau
+*.r1cs
+*.sym
+response_0003
+challenge_0003
+/*_js

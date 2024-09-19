@@ -3,13 +3,11 @@ pragma circom 2.0.0;
 // TODO Add Range Check
 
 include "../node_modules/circomlib/circuits/comparators.circom";
-include "../node_modules/circomlib/circuits/poseidon.circom";
 
-template isCloser() {
+template isFurther() {
     signal input treasureCoord[2];
     signal input userPrevCoord[2];
     signal input userCurrCoord[2];
-    signal input hash;
 
     signal prevXDiffSquared;
     signal prevYDiffSquared;
@@ -19,14 +17,9 @@ template isCloser() {
     signal currYDiffSquared;
     signal currDist;
 
-    signal output isCloser;
+    signal output isFurther;
 
-    component lt = LessThan(64);
-    component hasher = Poseidon(2);
-
-    hasher.in[0] <== treasureCoord[0];
-    hasher.in[1] <== treasureCoord[1];
-    hasher.out[0] === hash;
+    component gt = GreaterThan(64);
 
     prevXDiffSquared <== (treasureCoord[0] - userPrevCoord[0]) * (treasureCoord[0] - userPrevCoord[0]);
     prevYDiffSquared <== (treasureCoord[1] - userPrevCoord[1]) * (treasureCoord[1] - userPrevCoord[1]);
@@ -36,19 +29,15 @@ template isCloser() {
     currYDiffSquared <== (treasureCoord[1] - userCurrCoord[1]) * (treasureCoord[1] - userCurrCoord[1]);
     currDist <== currXDiffSquared + currYDiffSquared;
 
-    lt.in[0] <== currDist;
-    lt.in[1] <== prevDist;
-    isCloser <== lt.out;
+    gt.in[0] <== currDist;
+    gt.in[1] <== prevDist;
+    isFurther <== gt.out;
 }
 
-<<<<<<<< HEAD:packages/hardhat/circuit/circuits/isCloser.circom
-// component main {public [userPrevCoord, userCurrCoord]} = isCloser();
-========
-component main {public [userPrevCoord, userCurrCoord, hash]} = isCloser();
->>>>>>>> eb4bb9119ace73ae99a8735b00bedab248ee509e:prover/circuit/isCloser.circom
+component main {public [userPrevCoord, userCurrCoord]} = isFurther();
 
 /* INPUT = {
     "treasureCoord": ["12345", "12345"],
     "userPrevCoord": ["12343", "12343"],
-    "userCurrCoord": ["12344", "123444"]
+    "userCurrCoord": ["12344", "12344"]
 }*/

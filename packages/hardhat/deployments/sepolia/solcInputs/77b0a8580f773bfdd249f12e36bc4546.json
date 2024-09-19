@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Coordinate.sol": {
+      "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.24;\n\ncontract zkTreasure {\n\n    struct Coordinate {\n        uint256 coordinateId;\n        address player;\n        uint256 x;\n        uint256 y;\n    }\n\n    struct Game {\n        string name;\n        string description;\n        uint256 startAt;\n        uint256 duration;\n        address [] players;\n        Coordinate[] coordinates;\n        bool isOver;\n        address closestPlayer;\n        uint256 closestDistance;\n        uint256 totalDeposit;\n        bytes32 treasureHash;\n        Coordinate treasureCoordinate;\n        bool treasureCoordinateVerified;\n    }\n\n    Game[] public games;\n    mapping(address => Coordinate[]) public coordinates;\n\n    uint256 public nextGameId;\n    uint256 public nextCoordinateId;\n    address public owner;\n    uint256 public entranceFee;\n\n    constructor() {\n        owner = msg.sender;\n        entranceFee = 0.05 ether;\n    }\n\n    modifier onlyOwner() {\n        require(msg.sender == owner, \"not authorized\");\n        _;\n    }\n\n    // modifier checkGameId(uint256 _gameId) {\n    //     require(games[_gameId].length > 0, \"Game does not exist\");\n    //     _;\n    // }\n\n    function changeOwner(address _newOwner) external onlyOwner { // Change the owner\n        owner = _newOwner;\n    }\n\n    function changeEntranceFee(uint256 _newFee) external onlyOwner { // Change the entrance fee\n        for (uint i = 0; i < games.length; i++) { // Check if there are still players in the game\n            require(games[i].totalDeposit == 0, \"There are still players in the game\");\n        }\n        entranceFee = _newFee; // If not, change the entrance fee\n    }\n\n    function createGame(string memory _name, string memory _description, uint256 _duration, bytes32 _treasureHash) external onlyOwner () {\n        // Create a new game\n        uint256 gameId = nextGameId;\n        games.push(); // This creates a new empty Game struct in storage\n        Game storage newGame = games[gameId];\n        \n        newGame.name = _name;\n        newGame.description = _description;\n        newGame.startAt = 0;\n        newGame.duration = _duration;\n        newGame.isOver = false;\n        newGame.closestPlayer = address(0);\n        newGame.closestDistance = type(uint256).max;\n        newGame.totalDeposit = 0;\n        newGame.treasureHash = _treasureHash;\n        newGame.treasureCoordinateVerified = false;\n        \n        // Initialize the treasureCoordinate\n        newGame.treasureCoordinate = Coordinate({\n            coordinateId: 0,\n            player: address(0),\n            x: 0,\n            y: 0\n        });\n        \n        nextGameId++;\n    }\n\n    function getGame(uint256 _gameId) public view returns (Game memory) { // Get a game\n        return games[_gameId];\n    }\n\n    function startGame(uint256 _gameId) external onlyOwner () { // Start the game\n        assert(games[_gameId].isOver == false); // The game should not have started\n        assert(games[_gameId].startAt == 0);\n        games[_gameId].startAt = block.timestamp;\n    }\n\n    function finishGame(uint256 _gameId, Coordinate memory _treasureCoordinate) onlyOwner external { // Finish the game\n        assert(games[_gameId].isOver == false);\n        assert(games[_gameId].startAt + games[_gameId].duration <= block.timestamp);\n        games[_gameId].treasureCoordinate = _treasureCoordinate;\n        games[_gameId].isOver = true;\n    }\n\n    function createCoordinate(uint256 _gameId, uint256 _x, uint256 _y) external  { // Create a new coordinate\n        assert(games[_gameId].isOver == false); // The game should be ongoing\n        assert(games[_gameId].startAt != 0);\n        // TODO player should belong to a game\n        uint256 coordinateId = nextCoordinateId;\n        Coordinate memory newCoordinate = Coordinate(coordinateId, msg.sender, _x, _y);\n        games[_gameId].coordinates.push(newCoordinate);\n        coordinates[msg.sender].push(newCoordinate);\n        nextCoordinateId++;\n    }\n\n    function getCoordinate(uint256 _gameId) public view returns (Coordinate[] memory) { // Get all coordinates of a game\n        return games[_gameId].coordinates;\n    }\n\n    function verifyTreasureCoordinate(uint256 _gameId, Coordinate memory _treasureCoordinate) external { // Verify the treasure coordinate\n        require(games[_gameId].isOver == true, \"The game should be over\");\n        require(games[_gameId].treasureCoordinateVerified == false, \"The treasure coordinate is already verified\");\n        require(games[_gameId].treasureHash == keccak256(abi.encodePacked(_treasureCoordinate.x, _treasureCoordinate.y)), \"The treasure coordinate is wrong\");\n        games[_gameId].treasureCoordinateVerified = true;\n    }\n\n    function deposit(uint _gameId) external payable { // Deposit the entrance fee\n        require(msg.value >= entranceFee, \"The amount shoud be more than entranceFee.\");\n        games[_gameId].players.push(msg.sender);\n        games[_gameId].totalDeposit += msg.value;\n    }\n\n    function withdraw(uint256 _gameId) public onlyOwner payable { // Send rewards to the winner\n        (bool success, ) = games[_gameId].closestPlayer.call{value: games[_gameId].totalDeposit}(\"\");\n        require(success, \"Failed to send Rewards\");\n    }\n\n    function sqrt(uint x) internal pure returns (uint y) {\n        uint z = (x + 1) / 2;\n        y = x;\n        while (z < y) {\n            y = z;\n            z = (x / z + z) / 2;\n        }\n    }\n\n    function fraudProofCheck(uint256 _gameId, uint256 coordinateId) external { // Check if a player is cheating\n        // Here we check if the player is the closest to the treasure\n        require(games[_gameId].treasureCoordinateVerified == true, \"The treasure coordinate is not verified\");\n\n        uint256 inputX = games[_gameId].coordinates[coordinateId].x;\n        uint256 inputY = games[_gameId].coordinates[coordinateId].y;\n        uint256 treasureX = games[_gameId].treasureCoordinate.x;\n        uint256 treasureY = games[_gameId].treasureCoordinate.y;\n        uint256 distance = sqrt((inputX - treasureX) ** 2 + (inputY - treasureY) ** 2);\n        if(distance < distance) {\n            games[_gameId].closestPlayer = msg.sender;\n            games[_gameId].closestDistance = distance;\n        }\n    }\n\n    function setWinner(uint256 _gameId) external onlyOwner () { // Set the winner\n        // Here we compute the winner\n        assert(games[_gameId].isOver == true); // The game should be over\n        //fraudProofCheck();\n        withdraw(_gameId);\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
