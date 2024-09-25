@@ -1,0 +1,4 @@
+"compile": "bash -c 'for circuit in circuits/*.circom; do circom $circuit --r1cs --sym --wasm -o zk/circuits;done && npx tsc'",
+"export:sample-zkey": "bash -c 'for circuit in zk/circuits/*.r1cs; do snarkjs groth16 setup $circuit powersOfTau28_hez_final_15.ptau zk/zkeys/$(basename -- $circuit .r1cs).zkey;done'",
+"export:verifier": "bash -c 'for zkey in zk/zkeys/*.zkey; do npx snarkjs zkey export solidityverifier $zkey zk/verifiers/$(basename -- $zkey .zkey).sol; done'",
+"build": "yarn compile && yarn export:sample-zkey && yarn export:verifier"
